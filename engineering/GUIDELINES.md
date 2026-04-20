@@ -1,32 +1,25 @@
-# Documentation and Readability Guidelines
+# Coding Guidelines
 
-This document outlines the standards for documentation and code readability across our JavaScript and TypeScript projects.
+Apply these rules when generating or editing code. Keep output compact, but do not skip required documentation.
 
-## 1. General Readability & Inline Comments
+## Language-Agnostic Guidelines
 
-* **Block Summaries:** Use inline comments before logical blocks of code so readers can skim the comments to grasp what the entire block is doing without reading every line.
-* **Business Logic (The "Why" and "What"):** Comments should emphasize the "why" to provide business context. For complex algorithms or unintuitive implementation details, explain the "what" alongside it.
-* **Magic Numbers and Regular Expressions:** Place inline comments directly next to "magic numbers" (hardcoded values) and complex regular expressions explaining their specific purpose. Extracting them into constants is encouraged but not strictly required.
-* **TODOs and FIXMEs:** Issue tracker links are not required, but you must include a detailed description of what needs to be done or fixed for easier future reference.
+- Add inline comments before non-trivial logical blocks so a reader can only skim the comments and understand the flow.
+- Prefer self-explanatory code. Add comments only when they improve scanability or preserve intent.
+- Comments should explain the `why`. Explain the `what` when the logic is non-obvious, algorithmic, or otherwise hard to infer from the code.
+- Every `TODO` or `FIXME` must say exactly what needs to change or be fixed. Issue links are optional.
+- Add a file-level header comment describing the file's responsibility.
+- Prefer a `README.md` in major feature or domain directories to explain the module's purpose and architecture.
+- Add an inline comment for magic numbers and complex regular expressions unless their purpose is obvious. Extracting them into named constants is preferred (not required).
 
-    ```typescript
-    // TODO: Refactor the pagination calculation to handle edge cases where total items are less than the page size.
-    ```
+## Language-Specific Guidelines
 
-## 2. File and Directory Documentation
+## JavaScript / TypeScript
 
-* **File-Level Comments:** A block comment is required at the top of every file explaining its overall purpose and contents.
-* **Directory-Level Documentation:** Adding a `README.md` file is preferred, though not strictly required, in major feature or domain directories to explain the module's overarching architecture and purpose.
-
-## 3. Function Documentation
-
-* **JSDoc/TSDoc Requirement:** Use JSDoc/TSDoc to document all functions.
-* **Parameters and Returns:** The `@param` and `@returns` tags are required for all functions to explain their purpose. However, you can omit explicit type annotations within the JSDoc tags if the TypeScript types are already explicit.
-* **Exceptions:** Use the `@throws` tag to document custom or business-logic exceptions. You do not need to document standard built-in errors.
-* **Examples:** Use `@example` tags for utility functions or complex business logic where the usage is not immediately obvious.
-* **Deprecations:** Use the `@deprecated` tag for outdated code. You must include an explanation of the alternative solution or what to use instead. A strict removal timeline is not required.
-
-## 4. TypeScript Types and Declarations
-
-* **Type vs. Interface:** There is no strict preference between using `interface` or `type`. Use whichever fits the immediate context best (e.g., `interface` for standard object shapes, `type` for unions/intersections).
-* **Documenting Declarations:** JSDoc comments are required for the `interface`, `type`, or `enum` declaration itself. You only need to add comments to individual properties or members if their purpose is not obvious from the name.
+- Use JSDoc/TSDoc for all functions.
+- Include `@param` and `@returns` on every function. (can be omitted if the signature already makes them explicit)
+- Include `@throws` only for custom or business-logic exceptions. Do not document standard built-in errors unless the code relies on them as part of the API contract.
+- Add property or member comments only when the name does not already make the purpose clear.
+- Include `@example` when usage is not obvious, especially for utilities or dense business logic.
+- Include `@deprecated` for deprecated code and name the replacement or migration path.
+- For `interface`, `type`, and `enum` declarations, add a doc comment on the declaration itself.
