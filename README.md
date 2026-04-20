@@ -1,8 +1,10 @@
+![Hoboken Grace Logo](https://res.cloudinary.com/dzs7qxusf/image/upload/q_auto,h_48,f_webp/v1699556379/HobokenGraceLogo-1-01_udowdd)
+
 # Hoboken Grace Tech HQ
 
 Welcome to the central hub for the Hoboken Grace technology teams! This repository contains our organizational information, operational processes, code guidelines, and onboarding resources.
 
-Everything we build supports the mission of helping people find their way back to God.
+_Everything we build supports the mission of helping people find their way back to God._
 
 ## Directory
 
